@@ -28,16 +28,16 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit() {
-    this.router.navigate(["tasks/tabs/tab1"])
-    return
-    this._loginSvc.login({ username: this.email, password: this.password }).subscribe({
-      next: (res: any) => {
-        console.log(res)
-      },
-      error: (err: any) => {
-        console.log(err)
-      }
-    })
+    localStorage.setItem('token', 'Token bbd3b0f87ea844b4462f699e7cb97b34b0e8c97240070bc2de4e43aa2d67bca7');
+    this.router.navigate(["/tasks/my-tasks"])
+    // this._loginSvc.login({ username: this.email, password: this.password }).subscribe({
+    //   next: (res: any) => {
+    //     console.log(res)
+    //   },
+    //   error: (err: any) => {
+    //     console.log(err)
+    //   }
+    // })
   }
 
 }

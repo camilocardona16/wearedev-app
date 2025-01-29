@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listado de tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let tarea of [1,2,3,4,5,6,7,8,9,10]">
+      <ion-item>
+        <ion-checkbox slot="start" (ionChange)="tareaFinalizada(tarea)"></ion-checkbox>
+        Tarea {{tarea}}
+        <ion-icon *ngIf="tarea === 10" name="alert" color="warning" slot="end"></ion-icon>
+        <ion-icon *ngIf="tarea === 10" name="checkmark" color="success" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" expandable (click)="deleteTarea(tarea)">
+          Borrar
+        </ion-item-option>
+        <ion-item-option color="primary" expandable>
+          Ver
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="full" (click)="finishTasks()">Finalizar tareas seleccionadas</ion-button>
+    <ion-button expand="full" color="danger" (click)="finishTasks()">Eliminar todo</ion-button>
+  </ion-toolbar>
+</ion-footer>
