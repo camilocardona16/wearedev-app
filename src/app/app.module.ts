@@ -9,6 +9,12 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { InterceptorService } from './shared/interceptor';
 
+/**
+ * Módulo principal de la aplicación
+ *
+ * Este módulo configura el módulo de la aplicación
+ * con los componentes principales y servicios necesarios.
+ */
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -28,3 +34,4 @@ import { InterceptorService } from './shared/interceptor';
   bootstrap: [AppComponent],
 })
 export class AppModule { }
+

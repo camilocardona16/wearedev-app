@@ -1,3 +1,17 @@
+/**
+ * Componente para crear o editar una tarea
+ *
+ * Este componente se encarga de renderizar el formulario para
+ * crear o editar una tarea. Si se proporciona un id como parámetro
+ * en la ruta, se editará la tarea correspondiente, caso contrario
+ * se creará una nueva tarea.
+ *
+ * El formulario contiene los siguientes campos:
+ * - title: Título de la tarea
+ * - description: Descripción de la tarea
+ * - user: Usuario que creó la tarea
+ * - completed: Estado de la tarea (completada o no)
+ */
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -18,12 +32,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TaskComponent implements OnInit {
 
-  id = this._actRoutre.snapshot.params['id'];
+  id = this._actRoutre.snapshot.params['id']
 
   form: FormGroup = this._fb.group({
-    title: [''],
-    description: [''],
-    user: [''],
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    user: ['', Validators.required],
   })
 
   constructor(
@@ -36,7 +50,7 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {
     if (this.id) {
-      this.form.addControl('completed', new FormControl(''));
+      this.form.addControl('completed', new FormControl(false));
       this._taskSvc.get(this.id).subscribe({
         next: (res: any) => {
           this.form.patchValue(res)
@@ -47,7 +61,6 @@ export class TaskComponent implements OnInit {
       })
     }
   }
-
 
   onSubmit() {
     const id = JSON.parse(localStorage.getItem('user')!).id
@@ -75,3 +88,5 @@ export class TaskComponent implements OnInit {
   }
 
 }
+
+
