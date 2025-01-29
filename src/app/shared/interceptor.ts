@@ -10,7 +10,7 @@ export class InterceptorService implements HttpInterceptor {
         let token = localStorage.getItem('token');
         const newRequest = request.clone({
             setHeaders: {
-                Authorization: 'Token ' + token,
+                Authorization: `Token ${token}`,
             },
         });
         return next.handle(newRequest);

@@ -5,13 +5,14 @@ import { TasksRoutes } from './tasks/tasks.routes';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent
   },
   ...TasksRoutes,
   {
-    path: '**',
-    component: LoginComponent
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   }
 ];
 @NgModule({

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="ion-text-center" style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" style="width: 100%">
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <ion-item *ngIf="form.get('completed')">
+      <ion-label position="floating">Completed</ion-label>
+      <ion-toggle formControlName="completed"></ion-toggle>
+    </ion-item>
+
+    <ion-item-divider>
+    </ion-item-divider>
+
+    <ion-button expand="full" type="submit">{{id ?"Editar tarea" :"Crear tarea"}}</ion-button>
+  </form>
+</div>
